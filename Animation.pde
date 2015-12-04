@@ -133,18 +133,20 @@ class AnimationQueue extends AnimationBatch {
 class AnimationGroup extends AnimationBatch {
     // Animate all animations in the queue and dequeue finished animations
     void animateFrame() {
-        ArrayList<Animation> finishingAnimations = new ArrayList<Animation>();
+        if (!isFinished()) {
+            ArrayList<Animation> finishingAnimations = new ArrayList<Animation>();
 
-        for (Animation animation : queuedAnimations) {
-            animation.animateFrame();
-            if (animation.isFinished()) {
-                finishingAnimations.add(animation);
+            for (Animation animation : queuedAnimations) {
+                animation.animateFrame();
+                if (animation.isFinished()) {
+                    finishingAnimations.add(animation);
+                }
             }
-        }
 
-        for (Animation animation : finishingAnimations) {
-            finishedAnimations.add(animation);
-            queuedAnimations.remove(animation);
+            for (Animation animation : finishingAnimations) {
+                finishedAnimations.add(animation);
+                queuedAnimations.remove(animation);
+            }
         }
     }
 }
