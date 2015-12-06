@@ -59,3 +59,46 @@ class Circle implements Primitive {
 		ellipse(center.x, center.y, radius, radius);
 	}
 }
+
+class Rectangle implements Primitive {
+	Point topLeft;
+	float w;
+	float h;
+
+	Rectangle (Point p, float w, float h, boolean center) {
+		if (center) {
+			this.topLeft = new Point(p.x - w / 2, p.y - h / 2);
+			this.w = w;
+			this.h = h;
+		}
+		else {
+			this.topLeft = p;
+			this.w = w;
+			this.h = h;
+		}
+	}
+
+	Rectangle (Point topLeft, float w, float h) {
+		this(topLeft, w, h, false);
+	}
+
+	Rectangle (Point topLeft, Point bottomRight) {
+		this.topLeft = topLeft;
+		this.w = bottomRight.x - topLeft.x;
+		this.h = bottomRight.y - topLeft.y;
+	}
+
+	void draw() {
+		rect(topLeft.x, topLeft.y, w, h);
+	}
+
+	Point center() {
+		return new Point(topLeft.x + w / 2, topLeft.y + h / 2);
+	}
+}
+
+class Square extends Rectangle {
+	Square (Point topLeft, float length) {
+		super(topLeft, length, length);
+	}
+}
