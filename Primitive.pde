@@ -19,9 +19,9 @@ class Point implements Primitive {
         point(x, y);
     }
 
-    static void draw (float x, float y) {
-    	point(x, y);
-    }
+    // static void draw (float x, float y) {
+    // 	point(x, y);
+    // }
 }
 
 class Line implements Primitive {
@@ -37,9 +37,9 @@ class Line implements Primitive {
 		line(p1.x, p1.y, p2.x, p2.y);
 	}
 
-	static void draw (Point p1, Point p2) {
-		line(p1.x, p1.y, p2.x, p2.y);
-	}
+	// static void draw (Point p1, Point p2) {
+	// 	line(p1.x, p1.y, p2.x, p2.y);
+	// }
 }
 
 class Circle implements Primitive {
@@ -55,9 +55,9 @@ class Circle implements Primitive {
 		ellipse(center.x, center.y, radius, radius);
 	}
 
-	static void draw (Point center, float radius) {
-		ellipse(center.x, center.y, radius, radius);
-	}
+	// static void draw (Point center, float radius) {
+	// 	ellipse(center.x, center.y, radius, radius);
+	// }
 }
 
 class Rectangle implements Primitive {
